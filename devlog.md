@@ -6,3 +6,5 @@ python3 dummy_proxy.py
 # in another terminal:
 wget http://www.google.com/ -e use_proxy=yes -e http_proxy=127.0.0.1:12345
 ```
+## 2. multi-thread
+This proxy is multi-threaded now.

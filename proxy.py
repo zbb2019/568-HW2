@@ -1,7 +1,14 @@
 import socket
+import threading
 
 port = 12345
 host = ''
+
+def handle(conn, addr):
+    data = conn.recv(1024)
+    print(data)
+    conn.sendall(b'HTTP/1.0 200 OK\r\nContent-Type: text/html\r\n\r\n<h1>hello world</h1>')
+    conn.close()
 
 # dummy proxy server that returns a fixed response
 def main():
@@ -9,12 +16,8 @@ def main():
     s.bind((host, port))
     s.listen(1)
     while True:
-        conn, addr = s.accept()
-        print('Connected by', addr)
-        data = conn.recv(1024)
-        print(data)
-        conn.sendall(b'HTTP/1.0 200 OK\r\nContent-Type: text/html\r\n\r\n<h1>hello world</h1>')
-        conn.close()
+        result = s.accept()
+        threading.Thread(target=handle, args=result).start()
 
 
 if __name__ == '__main__':
