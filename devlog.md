@@ -33,3 +33,9 @@ The proxy now supports HTTPS tunnels. Tested with curl and browser. YouTube work
 >   - Send a 400 Bad Request response to the client
 > - the remote server may not be reachable:
 >   - Send a 502 Bad Gateway response to the client
+
+## 5. Support HTTP GET
+
+Basically the same as CONNECT. At the first request, instead of responding to the client, the proxy will send the request to the remote server and start bi-directional forwarding.
+
+POST can be supported in the same way.
