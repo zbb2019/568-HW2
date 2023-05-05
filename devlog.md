@@ -39,3 +39,7 @@ The proxy now supports HTTPS tunnels. Tested with curl and browser. YouTube work
 Basically the same as CONNECT. At the first request, instead of responding to the client, the proxy will send the request to the remote server and start bi-directional forwarding.
 
 POST can be supported in the same way.
+
+## 6. Support Logging
+
+Used the Python logging module to log. It is thread-safe.
